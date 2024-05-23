@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Board do
   let(:grid) do
     [
+      #   0  1  2  3  4  5  6
       %w[00 10 20 30 40 50 60], # row 0
       %w[01 11 21 31 41 51 61],
       %w[02 12 22 32 42 52 62],

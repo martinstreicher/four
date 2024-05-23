@@ -31,6 +31,8 @@ gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '>= 4.0.1'
 
+gem 'haml-rails'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -48,7 +50,8 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[mri windows]
+  # gem 'debug', platforms: %i[mri windows]
+  gem 'byebug'
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.13'
   gem 'rspec-rails', '~> 5.0'
@@ -79,3 +82,5 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+gem "tailwindcss-rails", "~> 2.6"

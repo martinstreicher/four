@@ -16,8 +16,8 @@ class Board
     new(columns:, rows:).tap do |board|
       board_manager = BoardManagerService.new(board)
 
-      grid.reverse.each do |row|
-        row.each_with_index do |player, column_index|
+      grid.each_with_index do |column, column_index|
+        column.reverse.each do |player|
           board_manager.insert(column: column_index, player: player)
         end
       end
@@ -36,6 +36,10 @@ class Board
 
   def column(index)
     grid[index]
+  end
+
+  def all_columns
+    (0...grid.size).to_a.map { |index| column(index) }
   end
 
   def column_full?(index)

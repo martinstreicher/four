@@ -17,7 +17,7 @@ class BoardManagerService
       next if cell.present?
 
       target_column[target_column_size - index - 1] = player
-      break
+      return target_column
     end
   end
 
