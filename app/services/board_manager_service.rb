@@ -16,8 +16,9 @@ class BoardManagerService
     target_column.reverse.each_with_index do |cell, index|
       next if cell.present?
 
-      target_column[target_column_size - index - 1] = player
-      return target_column
+      cell_position = target_column_size - index - 1
+      target_column[cell_position] = player
+      return cell_position
     end
   end
 

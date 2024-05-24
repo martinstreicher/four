@@ -23,12 +23,16 @@ class WinningConditionService
 
   def horizontal?
     row = board.row(position[:row])
-    row[position[:column]..].join.include?(player * 4)
+
+    row[position[:column]..].join.include?(player * 4) ||
+      row[0..position[:column]].join.include?(player * 4)
   end
 
   def vertical?
-    column = board.row(position[:column])
-    column[position[:row]..].join.include?(player * 4)
+    column = board.column(position[:column])
+
+    column[position[:row]..].join.include?(player * 4) ||
+      column[..position[:row]].join.include?(player * 4)
   end
 
   attr_reader :board, :player, :position

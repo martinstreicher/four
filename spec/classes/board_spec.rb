@@ -10,7 +10,7 @@ RSpec.describe Board do
       %w[03 13 23 33 43 53 63],
       %w[04 14 24 34 44 54 64],
       %w[05 15 25 35 45 55 65]  # row 5
-    ]
+  ].transpose
   end
 
   let(:board) { described_class.from_grid(grid) }
@@ -18,7 +18,7 @@ RSpec.describe Board do
   describe 'when using .from_grid to build a board from an array' do
     it 'creates a board from a grid' do
       7.times do |column|
-        expect(board.column(column)).to eq(grid.pluck(column))
+        expect(board.column(column)).to eq(grid.transpose.pluck(column))
       end
     end
   end

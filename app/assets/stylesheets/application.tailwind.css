@@ -11,3 +11,12 @@
 }
 
 */
+
+div.error {
+  background-color: red;
+  color: white;
+  margin: auto;
+  font-weight: bold !important;
+  padding: 10px;
+  text-align: center;
+}

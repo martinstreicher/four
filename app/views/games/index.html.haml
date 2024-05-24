@@ -5,8 +5,7 @@
 .container.flex.flex-row.flex-nowrap.justify-center
   - game.all_columns.each_with_index do |column, index|
     .container.flex-column.flex-nowrap{ class: "column-#{index}" }
-      %a{ href: edit_move_path(id: index), class: 'move' }
-        Move Here
+      = link_to 'Move Here', edit_move_path(id: index), class: 'move', data: { remote: false }
       - column.each_with_index do |cell, cindex|
         .cell.border-black.border{ class: "#{index}-#{cindex}" }
           = cell || '-'

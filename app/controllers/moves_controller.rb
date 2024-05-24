@@ -8,10 +8,18 @@ class MovesController < ApplicationController
       )
 
     board_manager = BoardManagerService.new(board)
-    board_manager.insert(player: session[:player], column: move_param.to_i)
+    row = board_manager.insert(player: session[:player], column: move_param.to_i)
+    session[:game] = board
+
+    if WinningConditionService.new(board: board, player: session[:player], position: { column: move_param.to_i, row: row }).won?
+      redirect_to games_path, notice: "Player #{session[:player]} won!"
+      return
+    end
 
     swap_players
-    session[:game] = board
+    redirect_to(games_path)
+  rescue BoardManagerService::IllegalMoveError
+    flash[:error] = 'Illegal move'
     redirect_to games_path
   end
 

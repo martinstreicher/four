@@ -12,6 +12,14 @@
   </head>
 
   <body>
+    <header>
+      <% flash.each do |level, error| %>
+        <div class="<%= level %>">
+          <%= error %>
+        </div>
+      <% end %>
+    </header>
+
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>

@@ -15,7 +15,7 @@ RSpec.describe WinningConditionService do
       %w[0 0 0 0 0 0 0],
       %w[0 0 0 0 0 0 0],
       %w[0 0 0 0 0 0 0]
-    ]
+    ].transpose
   end
 
   let(:position) { { row: 5, column: 0 } }
@@ -24,9 +24,9 @@ RSpec.describe WinningConditionService do
   describe 'when looking for horizontal winning conditions' do
     context 'when there is a horizontal win' do
       let(:grid) do
-        super().tap do |g|
+        super().transpose.tap do |g|
           g[5] = %w[0 0 0 X X X X]
-        end
+        end.transpose
       end
 
       it 'returns true' do
@@ -36,9 +36,9 @@ RSpec.describe WinningConditionService do
 
     context 'when there is not a horizontal win' do
       let(:grid) do
-        super().tap do |g|
+        super().transpose.tap do |g|
           g[5] = %w[0 0 0 X X 0 0]
-        end
+        end.transpose
       end
 
       it 'returns false' do
